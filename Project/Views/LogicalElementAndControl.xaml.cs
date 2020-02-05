@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project
+namespace Project.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LogicalElementAndControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogicalElementAndControl : UserControl
     {
-        public MainWindow()
+        public LogicalElementAndControl()
         {
             InitializeComponent();
         }
