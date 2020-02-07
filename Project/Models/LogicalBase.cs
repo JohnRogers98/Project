@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Models
 {
-    public abstract class LogicalElementBase
+    public abstract class LogicalBase : Output
     {
-        public abstract Boolean ReturnedValue { get; }
+       
     }
 }

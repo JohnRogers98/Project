@@ -71,11 +71,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\LogicalElementAnd.cs" />
-    <Compile Include="Models\LogicalElementNot.cs" />
-    <Compile Include="Models\LogicalElementOr.cs" />
+    <Compile Include="Models\Output.cs" />
+    <Compile Include="Models\LogicalAnd.cs" />
+    <Compile Include="Models\LogicalNot.cs" />
+    <Compile Include="Models\LogicalOr.cs" />
+    <Compile Include="Models\Input.cs" />
+    <Compile Include="Models\LogicalSwitch.cs" />
     <Compile Include="Views\DrawingCanvas.cs" />
-    <Compile Include="Models\LogicalElementBase.cs" />
+    <Compile Include="Models\LogicalBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\LogicalElementAndControl.xaml.cs">
       <DependentUpon>LogicalElementAndControl.xaml</DependentUpon>
