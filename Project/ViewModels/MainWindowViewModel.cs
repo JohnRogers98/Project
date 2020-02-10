@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Project.ViewModels
 {
     class MainWindowViewModel
     {
-        public UserControl selectedElement; 
+        public UserControl selectedElement;
+
+        public static LogicalBase selectedLogicalBase;
     }
 }

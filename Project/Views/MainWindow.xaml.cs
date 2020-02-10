@@ -29,16 +29,16 @@ namespace Project.Views
 
         private void LogicalHitMouseLeftButtonDownOnTish(object sender, MouseButtonEventArgs e)
         {
-            Point coordinateMouse = e.GetPosition(logicalElementsTish);
+            //Point coordinateMouse = e.GetPosition(logicalElementsTish);
 
-            LogicalElementAndControl rectangle = new LogicalElementAndControl();
-            rectangle.Focusable = true;
-            rectangle.Height = 100;
-            rectangle.Width = 200;
-            Canvas.SetLeft(rectangle, coordinateMouse.X);
-            Canvas.SetTop(rectangle, coordinateMouse.Y);
+            //LogicalElementAndControl rectangle = new LogicalElementAndControl();
+            //rectangle.Focusable = true;
+            //rectangle.Height = 100;
+            //rectangle.Width = 200;
+            //Canvas.SetLeft(rectangle, coordinateMouse.X);
+            //Canvas.SetTop(rectangle, coordinateMouse.Y);
 
-                logicalElementsTish.Children.Add(rectangle);
+            //    logicalElementsTish.Children.Add(rectangle);
                 
         }
     }

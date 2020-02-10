@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Project.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LogicalElementAndControl.xaml
+    /// Логика взаимодействия для LogicalSignalControl.xaml
     /// </summary>
-    public partial class LogicalElementAndControl : UserControl
+    public partial class LogicalSignalControl : UserControl
     {
-        public LogicalElementAndControl()
+        public LogicalSignalControl()
         {
             InitializeComponent();
         }

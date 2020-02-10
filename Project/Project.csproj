@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\LogicalElementAndControl.xaml">
+    <Page Include="Views\LogicalSignalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicalAndControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,17 +75,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Output.cs" />
-    <Compile Include="Models\LogicalAnd.cs" />
-    <Compile Include="Models\LogicalNot.cs" />
-    <Compile Include="Models\LogicalOr.cs" />
-    <Compile Include="Models\Input.cs" />
-    <Compile Include="Models\LogicalSwitch.cs" />
+    <Compile Include="Models\LogicalElements\IObservable.cs" />
+    <Compile Include="Models\LogicalElements\IObserver.cs" />
+    <Compile Include="Models\LogicalElements\Output.cs" />
+    <Compile Include="Models\LogicalElements\LogicalAnd.cs" />
+    <Compile Include="Models\LogicalElements\LogicalNot.cs" />
+    <Compile Include="Models\LogicalElements\LogicalOr.cs" />
+    <Compile Include="Models\LogicalElements\Input.cs" />
+    <Compile Include="Models\LogicalElements\LogicalSwitch.cs" />
+    <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="ViewModels\LogicalAndViewModel.cs" />
     <Compile Include="Views\DrawingCanvas.cs" />
-    <Compile Include="Models\LogicalBase.cs" />
+    <Compile Include="Models\LogicalElements\LogicalBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\LogicalElementAndControl.xaml.cs">
-      <DependentUpon>LogicalElementAndControl.xaml</DependentUpon>
+    <Compile Include="Views\LogicalSignalControl.xaml.cs">
+      <DependentUpon>LogicalSignalControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicalAndControl.xaml.cs">
+      <DependentUpon>LogicalAndControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogicalElementOrControl.xaml.cs">
       <DependentUpon>LogicalElementOrControl.xaml</DependentUpon>
