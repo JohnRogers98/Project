@@ -8,43 +8,24 @@ namespace Project.Models
 {
     public class LogicalAnd : LogicalBase
     {
-        private Input firstInput;
-        public Input FirstInput
-        {
-            get
-            {
-                return firstInput;
-            }
-        }
-
-        private Input secondInput;
-        public Input SecondInput
-        {
-            get
-            {
-                return secondInput;
-            }
-        }
-
-        private Output output;
-        public Output Output
-        {
-            get
-            {
-                return output;
-            }
-        }
-
         public LogicalAnd()
         {
-            firstInput = new Input(this);
-            secondInput = new Input(this);
-            output = new Output();
+            inputs.Add(new Input(new Action(UpdateState)));
+            inputs.Add(new Input(new Action(UpdateState)));
         }
 
-        public override void UpdateState()
+        protected override void SetOutputSignal()
         {
-            output.OutputSignal = firstInput.InputSignal & secondInput.InputSignal; 
+            foreach (Input input in inputs)
+            {
+                if (input.SignalValue == false)
+                {
+                    Output.SignalValue = false;
+                    return;
+                }   
+            }
+
+            Output.SignalValue = true;
         }
     }
 }

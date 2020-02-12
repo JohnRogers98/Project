@@ -8,34 +8,14 @@ namespace Project.Models
 {
     public class LogicalNot : LogicalBase
     {
-        private Input input;
-        public Input Input
-        {
-            get
-            {
-                return input;
-            }
-        }
-
-        private Output output;
-
-        public Output Output
-        {
-            get
-            {
-                return output;
-            }
-        }
-
         public LogicalNot()
         {
-            input = new Input(this);
-            output = new Output();
+            inputs.Add(new Input(new Action(UpdateState)));
         }
 
-        public override void UpdateState()
+        protected override void SetOutputSignal()
         {
-            output.OutputSignal = !input.InputSignal;
+            Output.SignalValue = !inputs[0].SignalValue;
         }
     }
 }

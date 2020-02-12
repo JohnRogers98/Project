@@ -8,79 +8,76 @@ namespace ProjectTests
     public class LogicalElementTests
     {
         [TestMethod]
-        public void WorkLogicalSwitchTest()
+        public void LogicalSwitchWorkTest()
         {
             LogicalSwitch sw = new LogicalSwitch();
 
-            sw.UpdateState();
-            Assert.AreEqual(true, sw.Output.OutputSignal);
+            sw.Switching();
+            Assert.AreEqual(true, sw.Output.SignalValue);
 
-            sw.UpdateState();
+            sw.Switching();
 
-            Assert.AreEqual(false, sw.Output.OutputSignal);
+            Assert.AreEqual(false, sw.Output.SignalValue);
         }
 
         [TestMethod]
-        public void WorkLogicalAndTest()
+        public void LogicalAndWorkTest()
         {
             LogicalSwitch switchOne = new LogicalSwitch();
             LogicalSwitch switchTwo = new LogicalSwitch();
-            LogicalAnd and = new LogicalAnd();
+            LogicalBase and = new LogicalAnd();
 
-            switchOne.Output.AttachObserver(and.FirstInput);
-            switchTwo.Output.AttachObserver(and.SecondInput);
+            switchOne.Output.AttachObserver(and.Inputs[0]);
+            switchTwo.Output.AttachObserver(and.Inputs[1]);
 
-            switchOne.UpdateState();
-            Assert.AreEqual(false, and.Output.OutputSignal);
+            Assert.AreEqual(false, and.Output.SignalValue);
 
-            switchTwo.UpdateState();
+            switchOne.Switching();
+            Assert.AreEqual(false, and.Output.SignalValue);
 
-            Assert.AreEqual(true, and.Output.OutputSignal);
+            switchTwo.Switching();
+            Assert.AreEqual(true, and.Output.SignalValue);
 
-            switchOne.UpdateState();
+            switchOne.Switching();
+            Assert.AreEqual(false, and.Output.SignalValue);
 
-            Assert.AreEqual(false, and.Output.OutputSignal);
-
-            switchTwo.UpdateState();
-
-            Assert.AreEqual(false, and.Output.OutputSignal);
+            switchTwo.Switching();
+            Assert.AreEqual(false, and.Output.SignalValue);
         }
 
         [TestMethod]
-        public void WorkLogicalOrTest()
+        public void LogicalOrWorkTest()
         {
             LogicalSwitch switchOne = new LogicalSwitch();
             LogicalSwitch switchTwo = new LogicalSwitch();
-            LogicalOr or = new LogicalOr();
+            LogicalBase or = new LogicalOr();
 
-            switchOne.Output.AttachObserver(or.FirstInput);
-            switchTwo.Output.AttachObserver(or.SecondInput);
+            switchOne.Output.AttachObserver(or.Inputs[0]);
+            switchTwo.Output.AttachObserver(or.Inputs[1]);
 
-            switchOne.UpdateState();
-            Assert.AreEqual(true, or.Output.OutputSignal);
+            switchOne.Switching();
+            Assert.AreEqual(true, or.Output.SignalValue);
 
-            switchTwo.UpdateState();
+            switchTwo.Switching();
+            Assert.AreEqual(true, or.Output.SignalValue);
 
-            Assert.AreEqual(true, or.Output.OutputSignal);
+            switchOne.Switching();
+            Assert.AreEqual(true, or.Output.SignalValue);
 
-            switchOne.UpdateState();
+            switchTwo.Switching();
 
-            Assert.AreEqual(true, or.Output.OutputSignal);
-
-            switchTwo.UpdateState();
-
-            Assert.AreEqual(false, or.Output.OutputSignal);
+            Assert.AreEqual(false, or.Output.SignalValue);
         }
 
         [TestMethod]
-        public void WorkLogicalNotTest()
+        public void LogicalNotWorkTest()
         {
             LogicalSwitch switchOne = new LogicalSwitch();
             LogicalNot not = new LogicalNot();
 
-            switchOne.Output.AttachObserver(not.Input);
+            switchOne.Output.AttachObserver(not.Inputs[0]);
 
-            Assert.AreEqual(true, not.Output.OutputSignal);
+            Assert.AreEqual(true, not.Output.SignalValue);
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Project
+namespace Project.Views
 {
-    class DrawingCanvas : Canvas
+    public class DrawingCanvas : Canvas
     {
 
     }

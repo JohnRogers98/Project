@@ -24,7 +24,7 @@ namespace Project.Views
         public LogicalAndControl()
         {
             InitializeComponent();
-            DataContext = new LogicalAndViewModel(this);
+            DataContext = new LogicalAndVM();
         }
     }
 }

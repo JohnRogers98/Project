@@ -6,6 +6,16 @@
              xmlns:local="clr-namespace:Project.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="MinHeight" Value="30"></Setter>
+            <Setter Property="MaxHeight" Value="50"></Setter>
+            <Setter Property="MinWidth" Value="30"></Setter>
+            <Setter Property="MaxWidth" Value="50"></Setter>
+        </Style>    
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -19,12 +29,12 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Button x:Name="firstInput" Command="{Binding ElementName=AddPathToFirstInput}"></Button>
-            <Button x:Name="secondInput" Grid.Row="1" Command="{Binding ElementName=AddPathToSecondInput}"></Button>
+            <!--<Button Command="{Binding  Path=InputOnePath}"></Button>
+            <Button Tag="1" Command="{Binding  Path=InputTwoPath}" CommandParameter="{Binding}" Grid.Row="1"></Button>-->
         </Grid>
 
         <Grid Grid.Column="2">
-            <Button x:Name="output"></Button>
+            <!--<Button Command="{Binding Path=OutputPath}"></Button>-->
         </Grid>
     </Grid>
 </UserControl>

@@ -8,8 +8,8 @@
         Title="Project" Height="450" Width="800">
     
     <Grid>
-        <Canvas x:Name="logicalElementsTish" Background="White" MouseLeftButtonDown="LogicalHitMouseLeftButtonDownOnTish">
+        <local:DrawingCanvas x:Name="logicalElementsTish" Background="White">
             
-        </Canvas>
+        </local:DrawingCanvas>
     </Grid>
 </Window>

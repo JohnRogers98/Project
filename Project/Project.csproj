@@ -55,15 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\LogicalSignalControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="Models\LogicalElements\Signals\Signal.cs" />
+    <Compile Include="ViewModels\LoicalElementVM\LogicalNotVM.cs" />
+    <Compile Include="ViewModels\LoicalElementVM\LogicalOrVM.cs" />
+    <Compile Include="ViewModels\LoicalElementVM\LogicalSwitchVM.cs" />
+    <Compile Include="Models\SelectSignal.cs" />
     <Page Include="Views\LogicalAndControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalElementOrControl.xaml">
+    <Page Include="Views\LogicalSwitchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,27 +76,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\LogicalElements\IObservable.cs" />
-    <Compile Include="Models\LogicalElements\IObserver.cs" />
-    <Compile Include="Models\LogicalElements\Output.cs" />
+    <Compile Include="Models\LogicalElements\Signals\IObservable.cs" />
+    <Compile Include="Models\LogicalElements\Signals\IObserver.cs" />
+    <Compile Include="Models\LogicalElements\Signals\Output.cs" />
     <Compile Include="Models\LogicalElements\LogicalAnd.cs" />
     <Compile Include="Models\LogicalElements\LogicalNot.cs" />
     <Compile Include="Models\LogicalElements\LogicalOr.cs" />
-    <Compile Include="Models\LogicalElements\Input.cs" />
-    <Compile Include="Models\LogicalElements\LogicalSwitch.cs" />
-    <Compile Include="Models\RelayCommand.cs" />
-    <Compile Include="ViewModels\LogicalAndViewModel.cs" />
+    <Compile Include="Models\LogicalElements\Signals\Input.cs" />
+    <Compile Include="Models\LogicalElements\Switch.cs" />
+    <Compile Include="Models\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\LoicalElementVM\LogicalAndVM.cs" />
+    <Compile Include="ViewModels\LoicalElementVM\LogicalBaseVM.cs" />
     <Compile Include="Views\DrawingCanvas.cs" />
     <Compile Include="Models\LogicalElements\LogicalBase.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\LogicalSignalControl.xaml.cs">
-      <DependentUpon>LogicalSignalControl.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="Views\LogicalAndControl.xaml.cs">
       <DependentUpon>LogicalAndControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalElementOrControl.xaml.cs">
-      <DependentUpon>LogicalElementOrControl.xaml</DependentUpon>
+    <Compile Include="Views\LogicalSwitchControl.xaml.cs">
+      <DependentUpon>LogicalSwitchControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
