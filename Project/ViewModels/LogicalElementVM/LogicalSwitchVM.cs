@@ -11,11 +11,11 @@ namespace Project.ViewModels
     {
         LogicalSwitch switchModel;
 
-        public Boolean OutputSignal
+        public Signal Output
         {
             get
             {
-                return switchModel.Output.SignalValue;
+                return switchModel.Output;
             }
         }
 

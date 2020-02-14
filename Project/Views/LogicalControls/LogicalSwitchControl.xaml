@@ -7,6 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Switch" Command="{Binding Path=SwitchingCommand}"></Button>
+        
+        <local:SignalButton Grid.Column="1" SignalIsOutput="True" Command="{Binding Path=SelectOutputCommand}"
+                            SignalValue="{Binding Path=Output.SignalValue}"></local:SignalButton>
     </Grid>
 </UserControl>

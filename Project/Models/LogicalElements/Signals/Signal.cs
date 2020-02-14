@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,16 +20,16 @@ namespace Project.Models
             set
             {
                 signalValue = value;
-                OnPropertyChanged("SignalValue");
+                OnPropertyChanged(new PropertyChangedEventArgs("SignalValue"));
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string property = " ")
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
-                handler(this, new PropertyChangedEventArgs(property));
+                handler(this, e);
         }
     }
 }

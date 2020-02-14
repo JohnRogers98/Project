@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Project.Models;
 using Project.ViewModels;
 
 namespace ProjectTests
@@ -16,10 +17,10 @@ namespace ProjectTests
             ICommand switchCommand = sw.SwitchingCommand;
 
             switchCommand.Execute(null);
-            Assert.AreEqual(true, sw.OutputSignal);
+            Assert.AreEqual(true, sw.Output.SignalValue);
 
             switchCommand.Execute(null);
-            Assert.AreEqual(false, sw.OutputSignal);
+            Assert.AreEqual(false, sw.Output.SignalValue);
         }
 
         [TestMethod]
@@ -27,7 +28,7 @@ namespace ProjectTests
         {
             LogicalSwitchVM switchOne = new LogicalSwitchVM();
             LogicalSwitchVM switchTwo = new LogicalSwitchVM();
-            LogicalBaseVM and = new LogicalAndVM();
+            LogicalBaseVM and = LogicalBaseVM.CreateLogicalAnd();
 
             ICommand switchingSwitchOne = switchOne.SwitchingCommand;
             switchingSwitchOne.Execute(null);
@@ -48,7 +49,7 @@ namespace ProjectTests
             selectSignalCommand = switchTwo.SelectOutputCommand;
             selectSignalCommand.Execute(null);
 
-            Assert.AreEqual(true, and.OutputSignal);
+            Assert.AreEqual(true, and.Output.SignalValue);
         }
 
         [TestMethod]
@@ -56,7 +57,7 @@ namespace ProjectTests
         {
             LogicalSwitchVM switchOne = new LogicalSwitchVM();
             LogicalSwitchVM switchTwo = new LogicalSwitchVM();
-            LogicalBaseVM or = new LogicalOrVM();
+            LogicalBaseVM or = LogicalBaseVM.CreateLogicalOr();
 
             ICommand switchingSwitchOne = switchOne.SwitchingCommand;
             switchingSwitchOne.Execute(null);
@@ -73,14 +74,14 @@ namespace ProjectTests
             selectSignalCommand = switchTwo.SelectOutputCommand;
             selectSignalCommand.Execute(null);
 
-            Assert.AreEqual(true, or.OutputSignal);
+            Assert.AreEqual(true, or.Output.SignalValue);
         }
 
         [TestMethod]
         public void LogicalNotCommandTest()
         {
             LogicalSwitchVM switchOne = new LogicalSwitchVM();
-            LogicalBaseVM not = new LogicalNotVM();
+            LogicalBaseVM not = LogicalBaseVM.CreateLogicalNot();
 
             ICommand selectSignalCommand = switchOne.SelectOutputCommand;
             selectSignalCommand.Execute(null);
@@ -88,7 +89,43 @@ namespace ProjectTests
             selectSignalCommand = not.SelectInputCommand;
             selectSignalCommand.Execute(0);
 
-            Assert.AreEqual(true, not.OutputSignal);
+            Assert.AreEqual(true, not.Output.SignalValue);
+        }
+
+        [TestMethod]
+        public void SelectSignalValueTest()
+        {
+            LogicalSwitchVM switchOne = new LogicalSwitchVM();
+            LogicalSwitchVM switchTwo = new LogicalSwitchVM();
+            LogicalBaseVM and = LogicalBaseVM.CreateLogicalAnd();
+
+            ICommand switchingSwitchOne = switchOne.SwitchingCommand;
+            switchingSwitchOne.Execute(null);
+
+            ICommand switchingSwitchTwo = switchTwo.SwitchingCommand;
+            switchingSwitchTwo.Execute(null);
+
+
+            ICommand selectSignalCommand = switchOne.SelectOutputCommand;
+            selectSignalCommand.Execute(null);
+            Assert.AreEqual((Signal)switchOne.Output, SelectSignal.Signal);
+
+            selectSignalCommand = switchTwo.SelectOutputCommand;
+            selectSignalCommand.Execute(null);
+            Assert.AreEqual((Signal)switchTwo.Output, SelectSignal.Signal);
+
+
+            selectSignalCommand = and.SelectInputCommand;
+            selectSignalCommand.Execute(0);
+            Assert.AreEqual(null, SelectSignal.Signal);
+
+            selectSignalCommand = and.SelectInputCommand;
+            selectSignalCommand.Execute(1);
+            Assert.AreEqual(and.Inputs[1], SelectSignal.Signal);
+
+            selectSignalCommand = switchOne.SelectOutputCommand;
+            selectSignalCommand.Execute(null);
+            Assert.AreEqual(null, SelectSignal.Signal);
         }
     }
 }

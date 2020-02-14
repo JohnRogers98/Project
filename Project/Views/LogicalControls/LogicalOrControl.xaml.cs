@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace Project.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LogicalElementAndControl.xaml
+    /// Логика взаимодействия для LogicalOrControl.xaml
     /// </summary>
-    public partial class LogicalAndControl : UserControl
+    public partial class LogicalOrControl : UserControl
     {
-        public LogicalAndControl()
+        public LogicalOrControl()
         {
             InitializeComponent();
-            DataContext = new LogicalAndVM();
+            DataContext = LogicalBaseVM.CreateLogicalOr();
         }
     }
 }

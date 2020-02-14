@@ -12,6 +12,11 @@ namespace Project.Models
 
         public static Signal Signal
         {
+            get
+            {
+                return signal;
+            }
+
             set
             {
                 if (SelectSignal.signal == null || SelectSignal.signal.GetType() == value.GetType())

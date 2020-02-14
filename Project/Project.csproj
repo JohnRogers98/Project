@@ -56,15 +56,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\LogicalElements\Signals\Signal.cs" />
-    <Compile Include="ViewModels\LoicalElementVM\LogicalNotVM.cs" />
-    <Compile Include="ViewModels\LoicalElementVM\LogicalOrVM.cs" />
-    <Compile Include="ViewModels\LoicalElementVM\LogicalSwitchVM.cs" />
+    <Compile Include="ViewModels\LogicalElementVM\LogicalSwitchVM.cs" />
     <Compile Include="Models\SelectSignal.cs" />
-    <Page Include="Views\LogicalAndControl.xaml">
+    <Compile Include="Views\Elements\SignalButton.cs" />
+    <Page Include="Views\LogicalControls\LogicalAndControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalSwitchControl.xaml">
+    <Page Include="Views\LogicalControls\LogicalNotControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicalControls\LogicalOrControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicalControls\LogicalSwitchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,15 +92,20 @@
     <Compile Include="Models\LogicalElements\Signals\Input.cs" />
     <Compile Include="Models\LogicalElements\Switch.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
-    <Compile Include="ViewModels\LoicalElementVM\LogicalAndVM.cs" />
-    <Compile Include="ViewModels\LoicalElementVM\LogicalBaseVM.cs" />
-    <Compile Include="Views\DrawingCanvas.cs" />
+    <Compile Include="ViewModels\LogicalElementVM\LogicalBaseVM.cs" />
+    <Compile Include="Views\Elements\DrawingCanvas.cs" />
     <Compile Include="Models\LogicalElements\LogicalBase.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
-    <Compile Include="Views\LogicalAndControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\LogicalAndControl.xaml.cs">
       <DependentUpon>LogicalAndControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalSwitchControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\LogicalNotControl.xaml.cs">
+      <DependentUpon>LogicalNotControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicalControls\LogicalOrControl.xaml.cs">
+      <DependentUpon>LogicalOrControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicalControls\LogicalSwitchControl.xaml.cs">
       <DependentUpon>LogicalSwitchControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">

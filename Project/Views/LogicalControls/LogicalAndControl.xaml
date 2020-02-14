@@ -6,20 +6,11 @@
              xmlns:local="clr-namespace:Project.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <UserControl.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="MinHeight" Value="30"></Setter>
-            <Setter Property="MaxHeight" Value="50"></Setter>
-            <Setter Property="MinWidth" Value="30"></Setter>
-            <Setter Property="MaxWidth" Value="50"></Setter>
-        </Style>    
-    </UserControl.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -29,12 +20,16 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <!--<Button Command="{Binding  Path=InputOnePath}"></Button>
-            <Button Tag="1" Command="{Binding  Path=InputTwoPath}" CommandParameter="{Binding}" Grid.Row="1"></Button>-->
+            <local:SignalButton SignalIsOutput="False" Command="{Binding Path=SelectInputCommand}" 
+                                CommandParameter="0" SignalValue="{Binding Path=Inputs[0].SignalValue}"></local:SignalButton>
+            
+            
+            <local:SignalButton SignalIsOutput="False" Command="{Binding Path=SelectInputCommand}" 
+                                CommandParameter="1" Grid.Row="1" SignalValue="{Binding Path=Inputs[1].SignalValue}"></local:SignalButton>
         </Grid>
 
         <Grid Grid.Column="2">
-            <!--<Button Command="{Binding Path=OutputPath}"></Button>-->
+            <local:SignalButton SignalIsOutput="True" Command="{Binding Path=SelectOutputCommand}" SignalValue="{Binding Path=Output.SignalValue}"></local:SignalButton>
         </Grid>
     </Grid>
 </UserControl>
