@@ -10,7 +10,7 @@ namespace Project.Models
     {
         public LogicalNot()
         {
-            inputs.Add(new Input(new Action(UpdateState)));
+            SetupInputs(1);
         }
 
         protected override void SetOutputSignal()

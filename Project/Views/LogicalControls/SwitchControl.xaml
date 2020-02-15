@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Project.Views.LogicalSwitchControl"
+﻿<UserControl x:Class="Project.Views.SwitchControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,8 +13,9 @@
         </Grid.ColumnDefinitions>
 
         <Button Content="Switch" Command="{Binding Path=SwitchingCommand}"></Button>
-        
-        <local:SignalButton Grid.Column="1" SignalIsOutput="True" Command="{Binding Path=SelectOutputCommand}"
-                            SignalValue="{Binding Path=Output.SignalValue}"></local:SignalButton>
+
+        <local:SignalButton Grid.Column="1" Style="{StaticResource outputSignalButtonStyle}">
+            
+        </local:SignalButton>
     </Grid>
 </UserControl>

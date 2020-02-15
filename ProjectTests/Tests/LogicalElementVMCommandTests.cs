@@ -12,7 +12,7 @@ namespace ProjectTests
         [TestMethod]
         public void LogicalSwitchCommandTest()
         {
-            LogicalSwitchVM sw = new LogicalSwitchVM();
+            SwitchVM sw = new SwitchVM();
 
             ICommand switchCommand = sw.SwitchingCommand;
 
@@ -26,8 +26,8 @@ namespace ProjectTests
         [TestMethod]
         public void LogicalAndCommandTest()
         {
-            LogicalSwitchVM switchOne = new LogicalSwitchVM();
-            LogicalSwitchVM switchTwo = new LogicalSwitchVM();
+            SwitchVM switchOne = new SwitchVM();
+            SwitchVM switchTwo = new SwitchVM();
             LogicalBaseVM and = LogicalBaseVM.CreateLogicalAnd();
 
             ICommand switchingSwitchOne = switchOne.SwitchingCommand;
@@ -55,8 +55,8 @@ namespace ProjectTests
         [TestMethod]
         public void LogicalOrCommandTest()
         {
-            LogicalSwitchVM switchOne = new LogicalSwitchVM();
-            LogicalSwitchVM switchTwo = new LogicalSwitchVM();
+            SwitchVM switchOne = new SwitchVM();
+            SwitchVM switchTwo = new SwitchVM();
             LogicalBaseVM or = LogicalBaseVM.CreateLogicalOr();
 
             ICommand switchingSwitchOne = switchOne.SwitchingCommand;
@@ -80,7 +80,7 @@ namespace ProjectTests
         [TestMethod]
         public void LogicalNotCommandTest()
         {
-            LogicalSwitchVM switchOne = new LogicalSwitchVM();
+            SwitchVM switchOne = new SwitchVM();
             LogicalBaseVM not = LogicalBaseVM.CreateLogicalNot();
 
             ICommand selectSignalCommand = switchOne.SelectOutputCommand;
@@ -95,8 +95,8 @@ namespace ProjectTests
         [TestMethod]
         public void SelectSignalValueTest()
         {
-            LogicalSwitchVM switchOne = new LogicalSwitchVM();
-            LogicalSwitchVM switchTwo = new LogicalSwitchVM();
+            SwitchVM switchOne = new SwitchVM();
+            SwitchVM switchTwo = new SwitchVM();
             LogicalBaseVM and = LogicalBaseVM.CreateLogicalAnd();
 
             ICommand switchingSwitchOne = switchOne.SwitchingCommand;

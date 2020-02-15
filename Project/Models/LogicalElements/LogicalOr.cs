@@ -8,10 +8,9 @@ namespace Project.Models
 {
     public class LogicalOr : LogicalBase
     {
-        public LogicalOr()
+        public LogicalOr(Int32 numberInputs = 2)
         {
-            inputs.Add(new Input(new Action(UpdateState)));
-            inputs.Add(new Input(new Action(UpdateState)));
+            SetupInputs(numberInputs);
         }
 
         protected override void SetOutputSignal()

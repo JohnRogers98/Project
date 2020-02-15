@@ -7,21 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
 
-            <Grid>
-                <local:SignalButton SignalIsOutput="False" Command="{Binding Path=SelectInputCommand}" 
-                                CommandParameter="0" SignalValue="{Binding Path=Inputs[0].SignalValue}"></local:SignalButton>
-            </Grid>
+        <local:LogicalFrameControl>
+            
+        </local:LogicalFrameControl>
 
-            <Grid Grid.Column="2">
-                <local:SignalButton SignalIsOutput="True" Command="{Binding Path=SelectOutputCommand}" SignalValue="{Binding Path=Output.SignalValue}"></local:SignalButton>
-            </Grid>
-        </Grid>
     </Grid>
 </UserControl>

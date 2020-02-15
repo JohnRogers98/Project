@@ -10,7 +10,8 @@ namespace Project.Models
     {
         private Boolean signal;
 
-        private Output output = new Output(); 
+        private readonly Output output = new Output(); 
+
         public Output Output
         {
             get

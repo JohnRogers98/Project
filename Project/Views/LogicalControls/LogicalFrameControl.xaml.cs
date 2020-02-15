@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Project.ViewModels;
 
 namespace Project.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LogicalSwitchControl.xaml
+    /// Логика взаимодействия для LogicalFrameControl.xaml
     /// </summary>
-    public partial class LogicalSwitchControl : UserControl
+    public partial class LogicalFrameControl : UserControl
     {
-        public LogicalSwitchControl()
+        public LogicalFrameControl()
         {
             InitializeComponent();
-            DataContext = new LogicalSwitchVM();
         }
     }
 }

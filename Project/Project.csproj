@@ -55,11 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\LogicalElements\LogicalShema.cs" />
     <Compile Include="Models\LogicalElements\Signals\Signal.cs" />
-    <Compile Include="ViewModels\LogicalElementVM\LogicalSwitchVM.cs" />
+    <Compile Include="ViewModels\LogicalElementVM\SwitchVM.cs" />
     <Compile Include="Models\SelectSignal.cs" />
     <Compile Include="Views\Elements\SignalButton.cs" />
+    <Compile Include="Views\Converters\SignalValueConverter.cs" />
     <Page Include="Views\LogicalControls\LogicalAndControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicalControls\LogicalFrameControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,7 +77,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalControls\LogicalSwitchControl.xaml">
+    <Page Include="Views\LogicalControls\SwitchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,14 +105,17 @@
     <Compile Include="Views\LogicalControls\LogicalAndControl.xaml.cs">
       <DependentUpon>LogicalAndControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LogicalControls\LogicalFrameControl.xaml.cs">
+      <DependentUpon>LogicalFrameControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogicalControls\LogicalNotControl.xaml.cs">
       <DependentUpon>LogicalNotControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogicalControls\LogicalOrControl.xaml.cs">
       <DependentUpon>LogicalOrControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalControls\LogicalSwitchControl.xaml.cs">
-      <DependentUpon>LogicalSwitchControl.xaml</DependentUpon>
+    <Compile Include="Views\LogicalControls\SwitchControl.xaml.cs">
+      <DependentUpon>SwitchControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -21,10 +21,10 @@ namespace Project.Views
     /// </summary>
     public partial class LogicalAndControl : UserControl
     {
-        public LogicalAndControl()
+        public LogicalAndControl(Int32 numberInputs = 2)
         {
             InitializeComponent();
-            DataContext = LogicalBaseVM.CreateLogicalAnd();
+            DataContext = LogicalBaseVM.CreateLogicalAnd(numberInputs);
         }
     }
 }

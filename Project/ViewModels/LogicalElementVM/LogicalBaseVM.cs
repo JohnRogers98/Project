@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Project.Models;
 
 namespace Project.ViewModels
@@ -19,11 +22,11 @@ namespace Project.ViewModels
             }
         }
 
-        public List<Signal> Inputs
+        public ObservableCollection<Signal> Inputs
         {
             get
             {
-                return new List<Signal>(logicalModel.Inputs);
+                return new ObservableCollection<Signal>(logicalModel.Inputs);
             }
         }
 
@@ -34,17 +37,17 @@ namespace Project.ViewModels
             return logicalBase;
         }
 
-        public static LogicalBaseVM CreateLogicalAnd()
+        public static LogicalBaseVM CreateLogicalAnd(Int32 numberCount = 2)
         {
             LogicalBaseVM logicalBase = new LogicalBaseVM();
-            logicalBase.logicalModel = new LogicalAnd();
+            logicalBase.logicalModel = new LogicalAnd(numberCount);
             return logicalBase;
         }
 
-        public static LogicalBaseVM CreateLogicalOr()
+        public static LogicalBaseVM CreateLogicalOr(Int32 numberCount = 2)
         {
             LogicalBaseVM logicalBase = new LogicalBaseVM();
-            logicalBase.logicalModel = new LogicalOr();
+            logicalBase.logicalModel = new LogicalOr(numberCount);
             return logicalBase;
         }
 
@@ -83,13 +86,14 @@ namespace Project.ViewModels
 
                         if (obj != null)
                         {
-                            if (obj.GetType() == typeof(String))
+                            if (obj.GetType() == typeof(Int32))
                             {
-                                numberInput = Convert.ToInt32((String)obj);
+                                numberInput = (Int32)obj;
                             }
                             else
                             {
-                                numberInput = (Int32)obj;
+                                Input input = (Input)obj;
+                                numberInput = Inputs.IndexOf(input);
                             }
                             SelectSignal.Signal = logicalModel.Inputs[numberInput];
                         }

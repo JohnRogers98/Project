@@ -46,6 +46,27 @@ namespace ProjectTests
         }
 
         [TestMethod]
+        public void CreatingMultiInputsElementAnd()
+        {
+            LogicalBase and = new LogicalAnd(3);
+
+            LogicalSwitch switchOne = new LogicalSwitch();
+            LogicalSwitch switchTwo = new LogicalSwitch();
+            LogicalSwitch switchThree = new LogicalSwitch();
+
+            switchOne.Output.AttachObserver(and.Inputs[0]);
+            switchTwo.Output.AttachObserver(and.Inputs[1]);
+            switchThree.Output.AttachObserver(and.Inputs[2]);
+
+            switchOne.Switching();
+            switchTwo.Switching();
+            Assert.AreEqual(false, and.Output.SignalValue);
+
+            switchThree.Switching();
+            Assert.AreEqual(true, and.Output.SignalValue);
+        }
+
+        [TestMethod]
         public void LogicalOrWorkTest()
         {
             LogicalSwitch switchOne = new LogicalSwitch();
@@ -67,6 +88,23 @@ namespace ProjectTests
             switchTwo.Switching();
 
             Assert.AreEqual(false, or.Output.SignalValue);
+        }
+
+        [TestMethod]
+        public void CreatingMultiInputsElementOr()
+        {
+            LogicalBase or = new LogicalOr(3);
+
+            LogicalSwitch switchOne = new LogicalSwitch();
+            LogicalSwitch switchTwo = new LogicalSwitch();
+            LogicalSwitch switchThree = new LogicalSwitch();
+
+            switchOne.Output.AttachObserver(or.Inputs[0]);
+            switchTwo.Output.AttachObserver(or.Inputs[1]);
+            switchThree.Output.AttachObserver(or.Inputs[2]);
+
+            switchOne.Switching();
+            Assert.AreEqual(true, or.Output.SignalValue);
         }
 
         [TestMethod]

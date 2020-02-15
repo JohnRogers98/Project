@@ -1,5 +1,4 @@
-﻿using Project.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project.ViewModels;
 
 namespace Project.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LogicalOrControl.xaml
+    /// Логика взаимодействия для LogicalSwitchControl.xaml
     /// </summary>
-    public partial class LogicalOrControl : UserControl
+    public partial class SwitchControl : UserControl
     {
-        public LogicalOrControl(Int32 numberInputs = 2)
+        public SwitchControl()
         {
             InitializeComponent();
-            DataContext = LogicalBaseVM.CreateLogicalOr(numberInputs);
+            DataContext = new SwitchVM();
         }
     }
 }

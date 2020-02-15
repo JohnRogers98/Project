@@ -7,9 +7,9 @@ using Project.Models;
 
 namespace Project.ViewModels
 {
-    public class LogicalSwitchVM
+    public class SwitchVM
     {
-        LogicalSwitch switchModel;
+        readonly LogicalSwitch switchModel;
 
         public Signal Output
         {
@@ -19,7 +19,7 @@ namespace Project.ViewModels
             }
         }
 
-        public LogicalSwitchVM()
+        public SwitchVM()
         {
             switchModel = new LogicalSwitch();
         }

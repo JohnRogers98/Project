@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ namespace Project.Models
 {
     public abstract class LogicalBase
     {
-        protected List<Input> inputs = new List<Input>();
+        protected readonly ObservableCollection<Input> inputs =
+            new ObservableCollection<Input>();
 
-        public  List<Input> Inputs
+        public  ObservableCollection<Input> Inputs
         {
             get
             {
@@ -35,5 +37,13 @@ namespace Project.Models
         }
 
         protected abstract void SetOutputSignal();
+
+        protected void SetupInputs(Int32 numberInputs)
+        {
+            for (Int32 i = 0; i < numberInputs; i++)
+            {
+                inputs.Add(new Input(new Action(UpdateState)));
+            }
+        }
     }
 }

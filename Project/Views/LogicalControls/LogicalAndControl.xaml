@@ -4,32 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Project.Views"
+             xmlns:localc="clr-namespace:Project.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <local:LogicalFrameControl>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <local:SignalButton SignalIsOutput="False" Command="{Binding Path=SelectInputCommand}" 
-                                CommandParameter="0" SignalValue="{Binding Path=Inputs[0].SignalValue}"></local:SignalButton>
-            
-            
-            <local:SignalButton SignalIsOutput="False" Command="{Binding Path=SelectInputCommand}" 
-                                CommandParameter="1" Grid.Row="1" SignalValue="{Binding Path=Inputs[1].SignalValue}"></local:SignalButton>
-        </Grid>
-
-        <Grid Grid.Column="2">
-            <local:SignalButton SignalIsOutput="True" Command="{Binding Path=SelectOutputCommand}" SignalValue="{Binding Path=Output.SignalValue}"></local:SignalButton>
-        </Grid>
+        </local:LogicalFrameControl>
     </Grid>
 </UserControl>

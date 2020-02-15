@@ -8,10 +8,9 @@ namespace Project.Models
 {
     public class LogicalAnd : LogicalBase
     {
-        public LogicalAnd()
+        public LogicalAnd(Int32 numberInputs = 2)
         {
-            inputs.Add(new Input(new Action(UpdateState)));
-            inputs.Add(new Input(new Action(UpdateState)));
+            SetupInputs(numberInputs);
         }
 
         protected override void SetOutputSignal()
