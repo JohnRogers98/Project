@@ -55,7 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\LogicalElements\LogicalShema.cs" />
+    <Compile Include="Models\LogicalElements\Composite\LogicalShema.cs" />
+    <Compile Include="Models\LogicalElements\Leaf\LogicalSpace.cs" />
+    <Compile Include="Models\LogicalElements\Signals\ShemaSignals\ShemaInput.cs" />
+    <Compile Include="Models\LogicalElements\Signals\ShemaSignals\ShemaOutput.cs" />
     <Compile Include="Models\LogicalElements\Signals\Signal.cs" />
     <Compile Include="ViewModels\LogicalElementVM\SwitchVM.cs" />
     <Compile Include="Models\SelectSignal.cs" />
@@ -77,6 +80,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LogicalControls\LogicalShemaControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicalControls\LogicalSpaceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LogicalControls\SwitchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,16 +102,16 @@
     </Compile>
     <Compile Include="Models\LogicalElements\Signals\IObservable.cs" />
     <Compile Include="Models\LogicalElements\Signals\IObserver.cs" />
-    <Compile Include="Models\LogicalElements\Signals\Output.cs" />
-    <Compile Include="Models\LogicalElements\LogicalAnd.cs" />
-    <Compile Include="Models\LogicalElements\LogicalNot.cs" />
-    <Compile Include="Models\LogicalElements\LogicalOr.cs" />
-    <Compile Include="Models\LogicalElements\Signals\Input.cs" />
+    <Compile Include="Models\LogicalElements\Signals\LeafSignals\Output.cs" />
+    <Compile Include="Models\LogicalElements\Leaf\LogicalAnd.cs" />
+    <Compile Include="Models\LogicalElements\Leaf\LogicalNot.cs" />
+    <Compile Include="Models\LogicalElements\Leaf\LogicalOr.cs" />
+    <Compile Include="Models\LogicalElements\Signals\LeafSignals\Input.cs" />
     <Compile Include="Models\LogicalElements\Switch.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\LogicalElementVM\LogicalBaseVM.cs" />
     <Compile Include="Views\Elements\DrawingCanvas.cs" />
-    <Compile Include="Models\LogicalElements\LogicalBase.cs" />
+    <Compile Include="Models\LogicalElements\Component\LogicalBase.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="Views\LogicalControls\LogicalAndControl.xaml.cs">
       <DependentUpon>LogicalAndControl.xaml</DependentUpon>
@@ -113,6 +124,12 @@
     </Compile>
     <Compile Include="Views\LogicalControls\LogicalOrControl.xaml.cs">
       <DependentUpon>LogicalOrControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicalControls\LogicalShemaControl.xaml.cs">
+      <DependentUpon>LogicalShemaControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicalControls\LogicalSpaceControl.xaml.cs">
+      <DependentUpon>LogicalSpaceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogicalControls\SwitchControl.xaml.cs">
       <DependentUpon>SwitchControl.xaml</DependentUpon>

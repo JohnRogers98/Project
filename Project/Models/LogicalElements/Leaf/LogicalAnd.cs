@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.Models
 {
@@ -10,7 +6,7 @@ namespace Project.Models
     {
         public LogicalAnd(Int32 numberInputs = 2)
         {
-            SetupInputs(numberInputs);
+            SetupLeafSignals(numberInputs);
         }
 
         protected override void SetOutputSignal()
@@ -19,12 +15,12 @@ namespace Project.Models
             {
                 if (input.SignalValue == false)
                 {
-                    Output.SignalValue = false;
+                    LeafOutput.SignalValue = false;
                     return;
-                }   
+                }
             }
 
-            Output.SignalValue = true;
+            LeafOutput.SignalValue = true;
         }
     }
 }

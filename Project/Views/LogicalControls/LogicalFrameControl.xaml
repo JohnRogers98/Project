@@ -14,15 +14,13 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <ListBox  ItemsSource="{Binding Path=Inputs}" ItemTemplate="{StaticResource inputsListDataTemplate}">
+            <ListBox ItemsSource="{Binding Path=Inputs}" ItemTemplate="{StaticResource signalListDataTemplate}">
 
             </ListBox>
 
-            <Grid Grid.Column="2">
-                <local:SignalButton Style="{StaticResource outputSignalButtonStyle}">
+            <ListBox  Grid.Column="2" ItemsSource="{Binding Path=Outputs}" ItemTemplate="{StaticResource signalListDataTemplate}">
 
-                </local:SignalButton>
-            </Grid>
+            </ListBox>
         </Grid>
     </Grid>
 </UserControl>

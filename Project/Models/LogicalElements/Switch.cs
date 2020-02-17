@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.Models
 {
-    public class LogicalSwitch
+    public class Switch
     {
         private Boolean signal;
 
-        private readonly Output output = new Output(); 
+        private readonly Output output = new Output();
 
         public Output Output
         {

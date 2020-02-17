@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Project.Models;
+using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using Project.Models;
 
 namespace Project.ViewModels
 {
@@ -14,11 +8,11 @@ namespace Project.ViewModels
     {
         protected LogicalBase logicalModel;
 
-        public Signal Output
+        public ObservableCollection<Signal> Outputs
         {
             get
             {
-                return logicalModel.Output;
+                return new ObservableCollection<Signal>(logicalModel.Outputs);
             }
         }
 
@@ -51,18 +45,57 @@ namespace Project.ViewModels
             return logicalBase;
         }
 
-        private RelayCommand selectOutputCommand;
-        public RelayCommand SelectOutputCommand
+        public static LogicalBaseVM CreateLogicalSpace()
+        {
+            LogicalBaseVM logicalBase = new LogicalBaseVM();
+            logicalBase.logicalModel = new LogicalSpace();
+            return logicalBase;
+        }
+
+
+        public static LogicalBaseVM CreateLogicalShema(ObservableCollection<LogicalBaseVM> elements)
+        {
+            LogicalBaseVM logicalBase = new LogicalBaseVM();
+
+            logicalBase.logicalModel = new LogicalShema(
+                ConvertCollectionBaseVMToBaseModel(elements)
+                );
+
+            return logicalBase;
+        }
+        public static LogicalBaseVM CreateLogicalShema(ObservableCollection<LogicalBase> elements)
+        {
+            LogicalBaseVM logicalBase = new LogicalBaseVM();
+            logicalBase.logicalModel = new LogicalShema(elements);
+            return logicalBase;
+        }
+        private static ObservableCollection<LogicalBase> ConvertCollectionBaseVMToBaseModel(ObservableCollection<LogicalBaseVM> VMElements)
+        {
+            ObservableCollection<LogicalBase> modelElements =
+                new ObservableCollection<LogicalBase>();
+
+            foreach (LogicalBaseVM element in VMElements)
+            {
+                modelElements.Add(element);
+            }
+            return modelElements;
+        }
+
+
+
+        private RelayCommand selectSignalCommand;
+        public RelayCommand SelectSignalCommand
         {
             get
             {
-                if (selectOutputCommand != null)
-                    return selectOutputCommand;
+                if (selectSignalCommand != null)
+                    return selectSignalCommand;
                 else
-                    return selectOutputCommand = new RelayCommand(
+                    return selectSignalCommand = new RelayCommand(
                     (obj) =>
                     {
-                        SelectSignal.Signal = logicalModel.Output;
+                        Signal signal = (Signal)obj;
+                        SelectSignal.Signal = signal;
                     },
                     (obj) =>
                     {
@@ -71,38 +104,9 @@ namespace Project.ViewModels
             }
         }
 
-        private RelayCommand selectInputCommand;
-        public RelayCommand SelectInputCommand
+        public static implicit operator LogicalBase(LogicalBaseVM vm)
         {
-            get
-            {
-                if (selectInputCommand != null)
-                    return selectInputCommand;
-                else
-                    return selectInputCommand = new RelayCommand(
-                    (obj) =>
-                    {
-                        Int32 numberInput;
-
-                        if (obj != null)
-                        {
-                            if (obj.GetType() == typeof(Int32))
-                            {
-                                numberInput = (Int32)obj;
-                            }
-                            else
-                            {
-                                Input input = (Input)obj;
-                                numberInput = Inputs.IndexOf(input);
-                            }
-                            SelectSignal.Signal = logicalModel.Inputs[numberInput];
-                        }
-                    },
-                    (obj) =>
-                    {
-                        return true;
-                    });
-            }
+            return vm.logicalModel;
         }
     }
 }

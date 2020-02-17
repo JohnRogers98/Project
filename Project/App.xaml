@@ -7,7 +7,7 @@
     <Application.Resources>
         <view:SignalValueConverter x:Key="signalValueConverter"/>
 
-        <Style x:Key="defaultSignalButtonStyle" TargetType="{x:Type view:SignalButton}">
+        <Style x:Key="signalButtonDefaultStyle" TargetType="{x:Type view:SignalButton}">
             <Setter Property="MinHeight" Value="30"></Setter>
             <Setter Property="MaxHeight" Value="50"></Setter>
             <Setter Property="MinWidth" Value="30"></Setter>
@@ -16,26 +16,8 @@
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
 
-        <Style x:Key="outputSignalButtonStyle" TargetType="{x:Type view:SignalButton}" 
-               BasedOn="{StaticResource defaultSignalButtonStyle}">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <Binding Path="Output.SignalValue">
-                        <Binding.Converter>
-                            <view:SignalValueConverter></view:SignalValueConverter>
-                        </Binding.Converter>
-                    </Binding>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Command">
-                <Setter.Value>
-                    <Binding Path="SelectOutputCommand"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="inputSignalButtonStyle" TargetType="{x:Type view:SignalButton}" 
-               BasedOn="{StaticResource defaultSignalButtonStyle}">
+        <Style x:Key="signalButtonForCollectionStyle" TargetType="{x:Type view:SignalButton}" 
+               BasedOn="{StaticResource signalButtonDefaultStyle}">
             <Setter Property="Background">
                 <Setter.Value>
                     <Binding Path="SignalValue">
@@ -47,20 +29,20 @@
             </Setter>
             <Setter Property="Command">
                 <Setter.Value>
-                    <Binding Path="DataContext.SelectInputCommand" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}"/>
+                    <Binding Path="DataContext.SelectSignalCommand" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="CommandParameter">
                 <Setter.Value>
                     <Binding>
-
+                        
                     </Binding>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <DataTemplate x:Key="inputsListDataTemplate">
-            <view:SignalButton Style="{StaticResource inputSignalButtonStyle}"></view:SignalButton>
+        <DataTemplate x:Key="signalListDataTemplate">
+            <view:SignalButton Style="{StaticResource signalButtonForCollectionStyle}"></view:SignalButton>
         </DataTemplate>
     </Application.Resources>
 </Application>

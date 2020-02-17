@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project.Models;
+﻿using Project.Models;
 
 namespace Project.ViewModels
 {
     public class SwitchVM
     {
-        readonly LogicalSwitch switchModel;
+        readonly Switch switchModel;
 
         public Signal Output
         {
@@ -21,7 +16,7 @@ namespace Project.ViewModels
 
         public SwitchVM()
         {
-            switchModel = new LogicalSwitch();
+            switchModel = new Switch();
         }
 
         private RelayCommand switchingCommand;
@@ -44,15 +39,15 @@ namespace Project.ViewModels
             }
         }
 
-        private RelayCommand selectOutputCommand;
-        public RelayCommand SelectOutputCommand
+        private RelayCommand selectSignalCommand;
+        public RelayCommand SelectSignalCommand
         {
             get
             {
-                if (selectOutputCommand != null)
-                    return selectOutputCommand;
+                if (selectSignalCommand != null)
+                    return selectSignalCommand;
                 else
-                    return selectOutputCommand = new RelayCommand(
+                    return selectSignalCommand = new RelayCommand(
                     (obj) =>
                     {
                         SelectSignal.Signal = switchModel.Output;

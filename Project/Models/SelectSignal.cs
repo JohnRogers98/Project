@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Project.Models
+﻿namespace Project.Models
 {
     public static class SelectSignal
     {
@@ -25,7 +19,7 @@ namespace Project.Models
                 }
                 else
                 {
-                    if(signal.GetType() == typeof(Output))
+                    if (signal.GetType() == typeof(Output))
                         ((Output)signal).AttachObserver((Input)value);
                     else
                         ((Output)value).AttachObserver((Input)signal);

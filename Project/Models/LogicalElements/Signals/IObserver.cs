@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.Models
 {
     public interface IObserver
     {
-        void Update(Boolean signal);   
+        Boolean IsObservable { get; }
+        IObservable Observable { get; }
+        Boolean AttachObservable(IObservable observable);
+        void DetachObservable();
+        void Update(Boolean signal);
     }
 }

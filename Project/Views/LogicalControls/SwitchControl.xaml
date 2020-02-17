@@ -14,8 +14,14 @@
 
         <Button Content="Switch" Command="{Binding Path=SwitchingCommand}"></Button>
 
-        <local:SignalButton Grid.Column="1" Style="{StaticResource outputSignalButtonStyle}">
-            
+        <local:SignalButton Grid.Column="1" Style="{StaticResource signalButtonDefaultStyle}" Command="{Binding Path=SelectSignalCommand}">
+            <local:SignalButton.Background>
+                <Binding Path="Output.SignalValue">
+                    <Binding.Converter>
+                        <local:SignalValueConverter></local:SignalValueConverter>
+                    </Binding.Converter>
+                </Binding>
+            </local:SignalButton.Background>
         </local:SignalButton>
     </Grid>
 </UserControl>

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.Models
 {
@@ -12,7 +8,10 @@ namespace Project.Models
         protected readonly ObservableCollection<Input> inputs =
             new ObservableCollection<Input>();
 
-        public  ObservableCollection<Input> Inputs
+        protected readonly ObservableCollection<Output> outputs =
+         new ObservableCollection<Output>();
+
+        public ObservableCollection<Input> Inputs
         {
             get
             {
@@ -20,30 +19,37 @@ namespace Project.Models
             }
         }
 
-        private Output output = new Output();
-
-        public Output Output
+        public ObservableCollection<Output> Outputs
         {
             get
             {
-                return output;
+                return outputs;
             }
-        } 
-        
+        }
+
+        protected Output LeafOutput
+        {
+            get
+            {
+                return Outputs[0];
+            }
+        }
+
         protected void UpdateState()
         {
             SetOutputSignal();
-            Output.NotifyAllObservers();
+            LeafOutput.NotifyAllObservers();
         }
 
         protected abstract void SetOutputSignal();
 
-        protected void SetupInputs(Int32 numberInputs)
+        protected void SetupLeafSignals(Int32 numberInputs)
         {
             for (Int32 i = 0; i < numberInputs; i++)
             {
                 inputs.Add(new Input(new Action(UpdateState)));
             }
+            Outputs.Add(new Output());
         }
     }
 }
