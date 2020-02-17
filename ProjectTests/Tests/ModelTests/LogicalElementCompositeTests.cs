@@ -26,7 +26,6 @@ namespace ProjectTests
             switchOne.Output.AttachObserver(xor.Inputs[0]);
             switchTwo.Output.AttachObserver(xor.Inputs[1]);
 
-
             switchOne.Switching();
             Assert.AreEqual(true, xor.Outputs[0].SignalValue);
 

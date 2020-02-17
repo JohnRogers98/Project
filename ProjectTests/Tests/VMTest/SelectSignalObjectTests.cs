@@ -25,20 +25,20 @@ namespace ProjectTests
 
             ICommand selectSignalCommand = switchOne.SelectSignalCommand;
             selectSignalCommand.Execute(null);
-            Assert.AreEqual((Signal)switchOne.Output, SelectSignal.Signal);
+            Assert.AreEqual(switchOne.Output, SelectSignal.Signal);
 
             selectSignalCommand = switchTwo.SelectSignalCommand;
             selectSignalCommand.Execute(null);
-            Assert.AreEqual((Signal)switchTwo.Output, SelectSignal.Signal);
+            Assert.AreEqual(switchTwo.Output, SelectSignal.Signal);
 
 
             selectSignalCommand = and.SelectSignalCommand;
-            selectSignalCommand.Execute(and.Inputs[0]);
+            selectSignalCommand.Execute(and.InputSignals[0]);
             Assert.AreEqual(null, SelectSignal.Signal);
 
             selectSignalCommand = and.SelectSignalCommand;
-            selectSignalCommand.Execute(and.Inputs[1]);
-            Assert.AreEqual(and.Inputs[1], SelectSignal.Signal);
+            selectSignalCommand.Execute(and.InputSignals[1]);
+            Assert.AreEqual(and.InputSignals[1], SelectSignal.Signal);
 
             selectSignalCommand = switchOne.SelectSignalCommand;
             selectSignalCommand.Execute(null);

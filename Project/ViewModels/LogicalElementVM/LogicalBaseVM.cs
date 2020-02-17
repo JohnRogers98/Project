@@ -8,7 +8,7 @@ namespace Project.ViewModels
     {
         protected LogicalBase logicalModel;
 
-        public ObservableCollection<Signal> Outputs
+        public ObservableCollection<Signal> OutputSignals
         {
             get
             {
@@ -16,11 +16,32 @@ namespace Project.ViewModels
             }
         }
 
-        public ObservableCollection<Signal> Inputs
+        public ObservableCollection<Signal> InputSignals
         {
             get
             {
                 return new ObservableCollection<Signal>(logicalModel.Inputs);
+            }
+        }
+
+        private RelayCommand selectSignalCommand;
+        public RelayCommand SelectSignalCommand
+        {
+            get
+            {
+                if (selectSignalCommand != null)
+                    return selectSignalCommand;
+                else
+                    return selectSignalCommand = new RelayCommand(
+                    (obj) =>
+                    {
+                        Signal signal = (Signal)obj;
+                        SelectSignal.Signal = signal;
+                    },
+                    (obj) =>
+                    {
+                        return true;
+                    });
             }
         }
 
@@ -52,7 +73,12 @@ namespace Project.ViewModels
             return logicalBase;
         }
 
-
+        public static LogicalBaseVM CreateLogicalShema(ObservableCollection<LogicalBase> elements)
+        {
+            LogicalBaseVM logicalBase = new LogicalBaseVM();
+            logicalBase.logicalModel = new LogicalShema(elements);
+            return logicalBase;
+        }
         public static LogicalBaseVM CreateLogicalShema(ObservableCollection<LogicalBaseVM> elements)
         {
             LogicalBaseVM logicalBase = new LogicalBaseVM();
@@ -60,16 +86,11 @@ namespace Project.ViewModels
             logicalBase.logicalModel = new LogicalShema(
                 ConvertCollectionBaseVMToBaseModel(elements)
                 );
-
             return logicalBase;
         }
-        public static LogicalBaseVM CreateLogicalShema(ObservableCollection<LogicalBase> elements)
-        {
-            LogicalBaseVM logicalBase = new LogicalBaseVM();
-            logicalBase.logicalModel = new LogicalShema(elements);
-            return logicalBase;
-        }
-        private static ObservableCollection<LogicalBase> ConvertCollectionBaseVMToBaseModel(ObservableCollection<LogicalBaseVM> VMElements)
+        
+        private static ObservableCollection<LogicalBase> ConvertCollectionBaseVMToBaseModel(
+            ObservableCollection<LogicalBaseVM> VMElements)
         {
             ObservableCollection<LogicalBase> modelElements =
                 new ObservableCollection<LogicalBase>();
@@ -79,29 +100,6 @@ namespace Project.ViewModels
                 modelElements.Add(element);
             }
             return modelElements;
-        }
-
-
-
-        private RelayCommand selectSignalCommand;
-        public RelayCommand SelectSignalCommand
-        {
-            get
-            {
-                if (selectSignalCommand != null)
-                    return selectSignalCommand;
-                else
-                    return selectSignalCommand = new RelayCommand(
-                    (obj) =>
-                    {
-                        Signal signal = (Signal)obj;
-                        SelectSignal.Signal = signal;
-                    },
-                    (obj) =>
-                    {
-                        return true;
-                    });
-            }
         }
 
         public static implicit operator LogicalBase(LogicalBaseVM vm)

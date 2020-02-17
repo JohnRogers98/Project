@@ -2,11 +2,11 @@
 
 namespace Project.Models
 {
-    public class LogicalAnd : LogicalBase
+    public class LogicalAnd : LogicalLeaf
     {
         public LogicalAnd(Int32 numberInputs = 2)
         {
-            SetupLeafSignals(numberInputs);
+            SetupSignals(numberInputs);
         }
 
         protected override void SetOutputSignal()

@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\LogicalElements\Composite\LogicalShema.cs" />
+    <Compile Include="Models\LogicalElements\Leaf\LogicalLeaf.cs" />
     <Compile Include="Models\LogicalElements\Leaf\LogicalSpace.cs" />
     <Compile Include="Models\LogicalElements\Signals\ShemaSignals\ShemaInput.cs" />
     <Compile Include="Models\LogicalElements\Signals\ShemaSignals\ShemaOutput.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="Models\SelectSignal.cs" />
     <Compile Include="Views\Elements\SignalButton.cs" />
     <Compile Include="Views\Converters\SignalValueConverter.cs" />
-    <Page Include="Views\LogicalControls\LogicalAndControl.xaml">
+    <Page Include="Views\LogicalControls\Leaf\LogicalAndControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -72,19 +73,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalControls\LogicalNotControl.xaml">
+    <Page Include="Views\LogicalControls\Leaf\LogicalNotControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalControls\LogicalOrControl.xaml">
+    <Page Include="Views\LogicalControls\Leaf\LogicalOrControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalControls\LogicalShemaControl.xaml">
+    <Page Include="Views\LogicalControls\Shema\LogicalShemaControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogicalControls\LogicalSpaceControl.xaml">
+    <Page Include="Views\LogicalControls\Leaf\LogicalSpaceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,22 +114,22 @@
     <Compile Include="Views\Elements\DrawingCanvas.cs" />
     <Compile Include="Models\LogicalElements\Component\LogicalBase.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
-    <Compile Include="Views\LogicalControls\LogicalAndControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\Leaf\LogicalAndControl.xaml.cs">
       <DependentUpon>LogicalAndControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogicalControls\LogicalFrameControl.xaml.cs">
       <DependentUpon>LogicalFrameControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalControls\LogicalNotControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\Leaf\LogicalNotControl.xaml.cs">
       <DependentUpon>LogicalNotControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalControls\LogicalOrControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\Leaf\LogicalOrControl.xaml.cs">
       <DependentUpon>LogicalOrControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalControls\LogicalShemaControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\Shema\LogicalShemaControl.xaml.cs">
       <DependentUpon>LogicalShemaControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogicalControls\LogicalSpaceControl.xaml.cs">
+    <Compile Include="Views\LogicalControls\Leaf\LogicalSpaceControl.xaml.cs">
       <DependentUpon>LogicalSpaceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogicalControls\SwitchControl.xaml.cs">

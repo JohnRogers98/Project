@@ -2,11 +2,11 @@
 
 namespace Project.Models
 {
-    public class LogicalOr : LogicalBase
+    public class LogicalOr : LogicalLeaf
     {
         public LogicalOr(Int32 numberInputs = 2)
         {
-            SetupLeafSignals(numberInputs);
+            SetupSignals(numberInputs);
         }
 
         protected override void SetOutputSignal()

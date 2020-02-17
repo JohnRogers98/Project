@@ -48,7 +48,7 @@ namespace Project.Models
 
         public void DetachObserver(IObserver observer)
         {
-            if (observers.Remove(observer))
+            if (observers.Remove(observer) == true)
             {
                 observerCount--;
                 observer.DetachObservable();

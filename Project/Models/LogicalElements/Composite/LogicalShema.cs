@@ -25,7 +25,7 @@ namespace Project.Models
         {
             foreach (LogicalBase element in incomingItems)
             {
-                foreach (Input input in element.Inputs)
+                foreach (IObserver input in element.Inputs)
                 {
                     if (input.IsObservable == false)
                     {
@@ -36,8 +36,7 @@ namespace Project.Models
         }
         private void CreateShemaInput(IObserver input)
         {
-            ShemaInput shemaInput = new ShemaInput();
-            shemaInput.OutputStateForShema.AttachObserver(input);
+            Input shemaInput = new ShemaInput(input);
             inputs.Add(shemaInput);
         }
 
@@ -46,7 +45,7 @@ namespace Project.Models
         {
             foreach (LogicalBase element in incomingItems)
             {
-                foreach (Output output in element.Outputs)
+                foreach (IObservable output in element.Outputs)
                 {
                     if (output.ObserverCount == 0)
                     {
@@ -57,14 +56,8 @@ namespace Project.Models
         }
         private void CreateShemaOutput(IObservable output)
         {
-            ShemaOutput shemaOutput = new ShemaOutput();
-            shemaOutput.InputStateForShema.AttachObservable(output);
+            Output shemaOutput = new ShemaOutput(output);
             outputs.Add(shemaOutput);
-        }
-
-        protected override void SetOutputSignal()
-        {
-            throw new NotImplementedException();
         }
     }
 }

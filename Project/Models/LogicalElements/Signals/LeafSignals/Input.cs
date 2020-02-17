@@ -6,7 +6,7 @@ namespace Project.Models
     {
         IObservable observable;
 
-        protected Action changeSignalCallback;
+        public Action changeSignalCallback;
 
         private Boolean isObservable;
         public Boolean IsObservable
@@ -41,6 +41,7 @@ namespace Project.Models
             if (isObservable == false)
             {
                 InstallNewObservable(observable);
+                observable.AttachObserver(this);
                 return true;
             }
             else
@@ -52,7 +53,6 @@ namespace Project.Models
         {
             this.observable = observable;
             isObservable = true;
-            observable.AttachObserver(this);
         }
 
 

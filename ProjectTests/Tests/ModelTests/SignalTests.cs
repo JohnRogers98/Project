@@ -86,45 +86,38 @@ namespace ProjectTests
         [TestMethod]
         public void ShemaInputTest()
         {
-            Switch sw = new Switch();
+            Output externalOutput = new Output();
+            Input internalShemaInput = new Input();
 
-            Input internalInput = new Input();
+            IObserver shemaInput = new ShemaInput(internalShemaInput);
+            shemaInput.AttachObservable(externalOutput);
 
-            ShemaInput shemaInput = new ShemaInput();
-            shemaInput.OutputStateForShema.AttachObserver(internalInput);
+            externalOutput.SignalValue = true;
+            externalOutput.NotifyAllObservers();
+            Assert.AreEqual(true, internalShemaInput.SignalValue);
 
-            ((IObserver)shemaInput).AttachObservable(sw.Output);
-
-
-            sw.Switching();
-
-            Assert.AreEqual(true, (internalInput).SignalValue);
-
-            sw.Switching();
-
-            Assert.AreEqual(false, (internalInput).SignalValue);
+            externalOutput.SignalValue = false;
+            externalOutput.NotifyAllObservers();
+            Assert.AreEqual(false, internalShemaInput.SignalValue);
         }
 
         [TestMethod]
         public void ShemaOutputTest()
         {
-            Switch internalElement = new Switch();
-
+            Output internalShemaOutput = new Output();
             Input externInput = new Input();
 
-            ShemaOutput shemaOutput = new ShemaOutput();
-            shemaOutput.InputStateForShema.AttachObservable(internalElement.Output);
-
-            ((IObservable)shemaOutput).AttachObserver(externInput);
+            ShemaOutput shemaOutput = new ShemaOutput(internalShemaOutput);            
+            shemaOutput.AttachObserver(externInput);
 
 
-            internalElement.Switching();
-
+            internalShemaOutput.SignalValue = true;
+            internalShemaOutput.NotifyAllObservers();
             Assert.AreEqual(true, externInput.SignalValue);
 
-            internalElement.Switching();
-
-            Assert.AreEqual(false, (externInput).SignalValue);
+            internalShemaOutput.SignalValue = false;
+            internalShemaOutput.NotifyAllObservers();
+            Assert.AreEqual(false, externInput.SignalValue);
         }
     }
 }

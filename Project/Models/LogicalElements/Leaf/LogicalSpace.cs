@@ -1,10 +1,10 @@
 ﻿namespace Project.Models
 {
-    public class LogicalSpace : LogicalBase
+    public class LogicalSpace : LogicalLeaf
     {
         public LogicalSpace()
         {
-            SetupLeafSignals(1);
+            SetupSignals(1);
         }
 
         protected override void SetOutputSignal()

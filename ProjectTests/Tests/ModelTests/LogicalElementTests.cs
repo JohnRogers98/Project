@@ -10,28 +10,25 @@ namespace ProjectTests
         [TestMethod]
         public void SwitchWorkTest()
         {
-            Switch sw = new Switch();
+            Switch switchOne = new Switch();
 
-            sw.Switching();
-            Assert.AreEqual(true, sw.Output.SignalValue);
+            switchOne.Switching();
+            Assert.AreEqual(true, switchOne.Output.SignalValue);
 
-            sw.Switching();
-
-            Assert.AreEqual(false, sw.Output.SignalValue);
+            switchOne.Switching();
+            Assert.AreEqual(false, switchOne.Output.SignalValue);
         }
 
         [TestMethod]
         public void LogicalSpaceWorkTest()
         {
             LogicalBase space = new LogicalSpace();
+            Switch switchOne = new Switch();
 
-            Switch sw = new Switch();
-
-            space.Inputs[0].AttachObservable(sw.Output);
+            space.Inputs[0].AttachObservable(switchOne.Output);
             Assert.AreEqual(false, space.Outputs[0].SignalValue);
 
-            sw.Switching();
-
+            switchOne.Switching();
             Assert.AreEqual(true, space.Outputs[0].SignalValue);
         }
 
@@ -101,7 +98,6 @@ namespace ProjectTests
             Assert.AreEqual(true, or.Outputs[0].SignalValue);
 
             switchTwo.Switching();
-
             Assert.AreEqual(false, or.Outputs[0].SignalValue);
         }
 
@@ -126,10 +122,9 @@ namespace ProjectTests
         public void LogicalNotWorkTest()
         {
             Switch switchOne = new Switch();
-            LogicalNot not = new LogicalNot();
+            LogicalBase not = new LogicalNot();
 
             switchOne.Output.AttachObserver(not.Inputs[0]);
-
             Assert.AreEqual(true, not.Outputs[0].SignalValue);
         }
     }

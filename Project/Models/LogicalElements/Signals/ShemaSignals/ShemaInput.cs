@@ -4,24 +4,18 @@ namespace Project.Models
 {
     public sealed class ShemaInput : Input
     {
-        private readonly IObservable outputStateForShema = new Output();
-        public IObservable OutputStateForShema
+        readonly IObservable outputState = new Output();
+
+        public ShemaInput(IObserver observer)
         {
-            get
-            {
-                return outputStateForShema;
-            }
+            outputState.AttachObserver(observer);
+            changeSignalCallback = new Action(InputAcceptSignalCallback);
         }
 
-        public ShemaInput()
+        private void InputAcceptSignalCallback()
         {
-            changeSignalCallback = new Action(ConnectionInternalInputToExternalOutput);
-        }
-
-        private void ConnectionInternalInputToExternalOutput()
-        {
-            ((Output)outputStateForShema).SignalValue = SignalValue;
-            outputStateForShema.NotifyAllObservers();
+            ((Signal)outputState).SignalValue = SignalValue;
+            outputState.NotifyAllObservers();
         }
     }
 }

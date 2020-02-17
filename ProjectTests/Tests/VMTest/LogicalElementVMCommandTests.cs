@@ -13,15 +13,15 @@ namespace ProjectTests
         [TestMethod]
         public void LogicalSwitchCommandTest()
         {
-            SwitchVM sw = new SwitchVM();
+            SwitchVM switchOne = new SwitchVM();
 
-            ICommand switchCommand = sw.SwitchingCommand;
-
-            switchCommand.Execute(null);
-            Assert.AreEqual(true, sw.Output.SignalValue);
+            ICommand switchCommand = switchOne.SwitchingCommand;
 
             switchCommand.Execute(null);
-            Assert.AreEqual(false, sw.Output.SignalValue);
+            Assert.AreEqual(true, switchOne.Output.SignalValue);
+
+            switchCommand.Execute(null);
+            Assert.AreEqual(false, switchOne.Output.SignalValue);
         }
 
         [TestMethod]
@@ -37,20 +37,19 @@ namespace ProjectTests
             ICommand switchingSwitchTwo = switchTwo.SwitchingCommand;
             switchingSwitchTwo.Execute(null);
 
-
             ICommand selectSignalCommand = switchOne.SelectSignalCommand;
             selectSignalCommand.Execute(null);
 
             selectSignalCommand = and.SelectSignalCommand;
-            selectSignalCommand.Execute(and.Inputs[0]);
+            selectSignalCommand.Execute(and.InputSignals[0]);
 
             selectSignalCommand = and.SelectSignalCommand;
-            selectSignalCommand.Execute(and.Inputs[1]);
+            selectSignalCommand.Execute(and.InputSignals[1]);
 
             selectSignalCommand = switchTwo.SelectSignalCommand;
             selectSignalCommand.Execute(null);
 
-            Assert.AreEqual(true, and.Outputs[0].SignalValue);
+            Assert.AreEqual(true, and.OutputSignals[0].SignalValue);
         }
 
         [TestMethod]
@@ -67,15 +66,15 @@ namespace ProjectTests
             selectSignalCommand.Execute(null);
 
             selectSignalCommand = or.SelectSignalCommand;
-            selectSignalCommand.Execute(or.Inputs[0]);
+            selectSignalCommand.Execute(or.InputSignals[0]);
 
             selectSignalCommand = or.SelectSignalCommand;
-            selectSignalCommand.Execute(or.Inputs[1]);
+            selectSignalCommand.Execute(or.InputSignals[1]);
 
             selectSignalCommand = switchTwo.SelectSignalCommand;
             selectSignalCommand.Execute(null);
 
-            Assert.AreEqual(true, or.Outputs[0].SignalValue);
+            Assert.AreEqual(true, or.OutputSignals[0].SignalValue);
         }
 
         [TestMethod]
@@ -88,9 +87,9 @@ namespace ProjectTests
             selectSignalCommand.Execute(null);
 
             selectSignalCommand = not.SelectSignalCommand;
-            selectSignalCommand.Execute(not.Inputs[0]);
+            selectSignalCommand.Execute(not.InputSignals[0]);
 
-            Assert.AreEqual(true, not.Outputs[0].SignalValue);
+            Assert.AreEqual(true, not.OutputSignals[0].SignalValue);
         }
 
         [TestMethod]
@@ -105,16 +104,16 @@ namespace ProjectTests
             selectSignalCommand.Execute(null);
 
             selectSignalCommand = space.SelectSignalCommand;
-            selectSignalCommand.Execute(space.Inputs[0]);
+            selectSignalCommand.Execute(space.InputSignals[0]);
 
             switchingSwitchOne.Execute(null);
-            Assert.AreEqual(true, space.Outputs[0].SignalValue);
+            Assert.AreEqual(true, space.OutputSignals[0].SignalValue);
         }
 
         [TestMethod]
         public void LogicalXorShemaCommandTest()
         {
-            ObservableCollection<LogicalBase> xorInternalCollectionFrame = 
+            ObservableCollection<LogicalBase> xorInternalCollectionFrame =
                 CreateCollectionFrame.CreateXorShemaFrame();
 
             LogicalBaseVM xor = LogicalBaseVM.CreateLogicalShema(xorInternalCollectionFrame);
@@ -132,18 +131,18 @@ namespace ProjectTests
             selectSignalCommand.Execute(null);
 
             selectSignalCommand = xor.SelectSignalCommand;
-            selectSignalCommand.Execute(xor.Inputs[0]);
+            selectSignalCommand.Execute(xor.InputSignals[0]);
 
             selectSignalCommand = xor.SelectSignalCommand;
-            selectSignalCommand.Execute(xor.Inputs[1]);
+            selectSignalCommand.Execute(xor.InputSignals[1]);
 
             selectSignalCommand = switchTwo.SelectSignalCommand;
             selectSignalCommand.Execute(null);
 
-            Assert.AreEqual(false, xor.Outputs[0].SignalValue);
+            Assert.AreEqual(false, xor.OutputSignals[0].SignalValue);
 
             switchingSwitchOne.Execute(null);
-            Assert.AreEqual(true, xor.Outputs[0].SignalValue);
+            Assert.AreEqual(true, xor.OutputSignals[0].SignalValue);
         }
     }
 }

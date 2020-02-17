@@ -13,9 +13,9 @@
 
             set
             {
-                if (SelectSignal.signal == null || SelectSignal.signal.GetType() == value.GetType())
+                if (signal == null || signal.GetType() == value.GetType())
                 {
-                    SelectSignal.signal = value;
+                    signal = value;
                 }
                 else
                 {
@@ -26,6 +26,6 @@
                     SelectSignal.signal = null;
                 }
             }
-        }
+        } 
     }
 }
